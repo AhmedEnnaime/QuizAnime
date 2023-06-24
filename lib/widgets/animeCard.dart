@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AnimeCard extends StatefulWidget {
-  const AnimeCard({super.key});
+class AnimeCard extends StatelessWidget {
+  final String anime;
 
-  @override
-  State<AnimeCard> createState() => _AnimeCardState();
-}
+  AnimeCard({required this.anime});
 
-class _AnimeCardState extends State<AnimeCard> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container();
   }
 }
