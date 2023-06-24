@@ -27,7 +27,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   flex: 2,
                 ),
                 Text(
-                  "Let's Play Quizz",
+                  "Let's Play Quiz",
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -43,7 +43,9 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
                 Spacer(),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "quiz");
+                  },
                   child: Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(kDefaultPadding * 0.75),
@@ -53,7 +55,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                     child: Center(
                       child: Text(
-                        "Let's Start Quizz",
+                        "Let's Start Quiz",
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge

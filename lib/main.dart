@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_anime/views/quiz.dart';
 import 'package:quizz_anime/views/welcome.dart';
 
 void main() {
@@ -10,9 +11,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark(),
-        home: WelcomePage());
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WelcomePage(),
+        'quiz': (context) => QuizPage(),
+      },
+    );
   }
 }
