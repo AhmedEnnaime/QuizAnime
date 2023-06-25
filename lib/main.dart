@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_anime/views/home.dart';
 import 'package:quizz_anime/views/quiz.dart';
 import 'package:quizz_anime/views/welcome.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => WelcomePage(),
+        'home': (context) => HomePage(),
         'quiz': (context) => QuizPage(),
       },
     );

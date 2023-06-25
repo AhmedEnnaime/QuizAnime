@@ -44,7 +44,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 Spacer(),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, "quiz");
+                    Navigator.pushNamed(context, "home");
                   },
                   child: Container(
                     width: double.infinity,
