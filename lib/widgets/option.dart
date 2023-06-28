@@ -32,6 +32,10 @@ class Option extends StatelessWidget {
             return kGrayColor;
           }
 
+          IconData getTheRightIcon() {
+            return getTheRightColor() == kRedColor ? Icons.close : Icons.done;
+          }
+
           return InkWell(
             onTap: press,
             child: Container(
@@ -44,16 +48,25 @@ class Option extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${index + 1} $text",
+                    "${index + 1}. $text",
                     style: TextStyle(color: getTheRightColor(), fontSize: 16),
                   ),
                   Container(
                     height: 26,
                     width: 26,
                     decoration: BoxDecoration(
+                      color: getTheRightColor() == kGrayColor
+                          ? Colors.transparent
+                          : getTheRightColor(),
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(color: getTheRightColor()),
                     ),
+                    child: getTheRightColor() == kGrayColor
+                        ? null
+                        : Icon(
+                            getTheRightIcon(),
+                            size: 16,
+                          ),
                   )
                 ],
               ),

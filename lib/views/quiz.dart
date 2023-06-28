@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:quizz_anime/controllers/questionController.dart';
 
 import '../widgets/body.dart';
 
@@ -7,6 +9,7 @@ class QuizPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    QuestionController _controller = Get.put(QuestionController());
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -15,7 +18,7 @@ class QuizPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: _controller.nextQuestion,
               child: Text(
                 "Skip",
                 style:

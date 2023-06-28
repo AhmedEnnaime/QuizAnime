@@ -9,6 +9,9 @@ class QuestionController extends GetxController
   late Animation<double> _animation;
   Animation<double> get animation => this._animation;
 
+  late PageController _pageController;
+  PageController get pageController => this._pageController;
+
   List<Question> _questions = OnePiece.map((question) => Question(
       id: question['id'],
       question: question['question'],
@@ -40,8 +43,17 @@ class QuestionController extends GetxController
       ..addListener(() {
         update();
       });
-    _animationController.forward();
+    _animationController.forward().whenComplete(nextQuestion);
+
+    _pageController = PageController();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    _animationController.dispose();
+    _pageController.dispose();
   }
 
   void checkAns(Question question, int selectedIndex) {
@@ -53,5 +65,25 @@ class QuestionController extends GetxController
 
     _animationController.stop();
     update();
+
+    Future.delayed(Duration(seconds: 3), () {
+      nextQuestion();
+    });
+  }
+
+  void nextQuestion() {
+    if (_questionNumber.value != _questions.length) {
+      _isAnswered = false;
+      _pageController.nextPage(
+          duration: Duration(milliseconds: 250), curve: Curves.ease);
+
+      _animationController.reset();
+
+      _animationController.forward().whenComplete(nextQuestion);
+    }
+  }
+
+  void updateTheQnNum(int index) {
+    _questionNumber.value = index + 1;
   }
 }
