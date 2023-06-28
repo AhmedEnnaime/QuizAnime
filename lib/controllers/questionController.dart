@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quizz_anime/models/Question.dart';
 import 'package:quizz_anime/questions_options.dart';
+import 'package:quizz_anime/views/score.dart';
 
 class QuestionController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -33,7 +34,7 @@ class QuestionController extends GetxController
   RxInt get questionNumber => this._questionNumber;
 
   late int _numOfCorrectAns = 0;
-  int get numOfCorrectAns => this._correctAns;
+  int get numOfCorrectAns => this._numOfCorrectAns;
 
   @override
   void onInit() {
@@ -80,6 +81,11 @@ class QuestionController extends GetxController
       _animationController.reset();
 
       _animationController.forward().whenComplete(nextQuestion);
+    } else {
+      Navigator.push(
+        Get.context!,
+        MaterialPageRoute(builder: (context) => ScorePage()),
+      );
     }
   }
 
