@@ -45,7 +45,9 @@ class AnimeCard extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "quiz");
+              },
               child: Text(
                 "Start Quiz",
                 style: TextStyle(fontWeight: FontWeight.bold),
