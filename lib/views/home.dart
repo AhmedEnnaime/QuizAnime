@@ -51,12 +51,12 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   AnimeCard(
-                    anime: 'Kimetsu',
-                    image: 'demon.png',
+                    anime: 'Jujutsu Kaisen',
+                    image: 'jjk.png',
                   ),
                   AnimeCard(
-                    anime: 'One piece',
-                    image: 'onepiece.png',
+                    anime: 'Naruto',
+                    image: 'naruto.png',
                   )
                 ],
               )

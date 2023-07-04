@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:quizz_anime/controllers/questionController.dart';
 
 class AnimeCard extends StatelessWidget {
   final String anime;
@@ -8,6 +11,12 @@ class AnimeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    QuestionController questionController = Get.put(QuestionController());
+
+    void onSelectAnime(String anime) {
+      questionController.loadQuestions(anime);
+    }
+
     return Container(
       width: 150,
       height: 265,
@@ -46,6 +55,7 @@ class AnimeCard extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                onSelectAnime(anime);
                 Navigator.pushNamed(context, "quiz");
               },
               child: Text(

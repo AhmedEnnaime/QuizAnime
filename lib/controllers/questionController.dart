@@ -13,11 +13,7 @@ class QuestionController extends GetxController
   late PageController _pageController;
   PageController get pageController => this._pageController;
 
-  List<Question> _questions = OnePiece.map((question) => Question(
-      id: question['id'],
-      question: question['question'],
-      options: question['options'],
-      answer: question['answer_index'])).toList();
+  List<Question> _questions = [];
 
   List<Question> get questions => this._questions;
 
@@ -91,5 +87,37 @@ class QuestionController extends GetxController
 
   void updateTheQnNum(int index) {
     _questionNumber.value = index + 1;
+  }
+
+  void loadQuestions(String anime) {
+    switch (anime) {
+      case 'One piece':
+        _questions = OnePiece.map((question) => Question(
+            id: question['id'],
+            question: question['question'],
+            options: question['options'],
+            answer: question['answer_index'])).toList();
+        break;
+      case 'Jujutsu Kaisen':
+        _questions = JJK
+            .map((question) => Question(
+                id: question['id'],
+                question: question['question'],
+                options: question['options'],
+                answer: question['answer_index']))
+            .toList();
+        print('Loaded Kimetsu questions: $_questions');
+        break;
+      case 'Kimetsu':
+        _questions = Kimetsu.map((question) => Question(
+            id: question['id'],
+            question: question['question'],
+            options: question['options'],
+            answer: question['answer_index'])).toList();
+        break;
+      // Add more cases for other animes
+    }
+
+    _questionNumber.value = 1;
   }
 }
