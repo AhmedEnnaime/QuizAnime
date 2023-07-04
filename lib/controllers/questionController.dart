@@ -115,6 +115,13 @@ class QuestionController extends GetxController
             options: question['options'],
             answer: question['answer_index'])).toList();
         break;
+      case 'Naruto':
+        _questions = Naruto.map((question) => Question(
+            id: question['id'],
+            question: question['question'],
+            options: question['options'],
+            answer: question['answer_index'])).toList();
+        break;
       // Add more cases for other animes
     }
 
