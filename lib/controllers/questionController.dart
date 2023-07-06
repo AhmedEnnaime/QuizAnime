@@ -71,17 +71,18 @@ class QuestionController extends GetxController
   void nextQuestion() {
     if (_questionNumber.value != _questions.length) {
       _isAnswered = false;
-      _pageController.nextPage(
-          duration: Duration(milliseconds: 250), curve: Curves.ease);
+
+      if (_pageController.hasClients && _pageController.positions.isNotEmpty) {
+        _pageController.nextPage(
+          duration: Duration(milliseconds: 250),
+          curve: Curves.ease,
+        );
+      }
 
       _animationController.reset();
-
       _animationController.forward().whenComplete(nextQuestion);
     } else {
-      Navigator.push(
-        Get.context!,
-        MaterialPageRoute(builder: (context) => ScorePage()),
-      );
+      Get.to(() => ScorePage());
     }
   }
 
@@ -126,5 +127,12 @@ class QuestionController extends GetxController
     }
 
     _questionNumber.value = 1;
+
+    resetTimer();
+  }
+
+  void resetTimer() {
+    _animationController.reset();
+    _animationController.forward().whenComplete(nextQuestion);
   }
 }
