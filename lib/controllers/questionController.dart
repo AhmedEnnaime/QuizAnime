@@ -107,7 +107,6 @@ class QuestionController extends GetxController
                 options: question['options'],
                 answer: question['answer_index']))
             .toList();
-        print('Loaded Kimetsu questions: $_questions');
         break;
       case 'Kimetsu':
         _questions = Kimetsu.map((question) => Question(
